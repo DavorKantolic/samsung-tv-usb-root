@@ -7,7 +7,7 @@ jobs:
   build_usb:
     name: Build Samsung TV USB Exploit Stick
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
       
@@ -15,6 +15,11 @@ jobs:
         uses: cachix/install-nix-action@v27
         with:
           nix_path: nixpkgs=channel:nixos-unstable
+          
+      - name: Prepare Dummy SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOm3A4dOWg8AIdJA7C9WpGbfS1S8Je0A9fU9EUt18aZf dummy@github" > ~/.ssh/id_ed25519.pub
           
       - name: Generate TV USB Root Image
         run: |
