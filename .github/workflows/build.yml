@@ -23,4 +23,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: final-tv-usb-stick
-          path: out/tv-usb-root.imgdd
+          path: out/tv-usb-root.img
